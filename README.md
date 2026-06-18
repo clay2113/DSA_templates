@@ -1,2 +1,2 @@
-# DSA
-All about data structures and algorithms in Python. Snippets, Hierarchy, Types and order.
+# DSA_snippets_python
+A personal collection of LeetCode templates, patterns, and competitive programming snippets.
