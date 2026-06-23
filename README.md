@@ -15,5 +15,5 @@ A personal collection of LeetCode templates, patterns, CP snippets and algorithm
 - Trees
 - Dynamic Programming
 - Number Theory
-  Ssegment and Fenwick Tree
+- Segment and Fenwick Tree
 - DSU
