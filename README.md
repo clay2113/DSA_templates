@@ -11,9 +11,9 @@ A personal collection of LeetCode templates, patterns, CP snippets and algorithm
 ## Topics Covered
 - Arrays & Hashing
 - Binary Search
-- Sliding Window
 - Graphs
 - Trees
 - Dynamic Programming
 - Number Theory
-- Advanced Data Structures
+  Ssegment and Fenwick Tree
+- DSU
