@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DSA Arrays Roadmap</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>🧮 Arrays — DSA Roadmap</h1>
+    <p>From fundamentals to FAANG-level problems.</p>
+    <nav>
+      <a href="../index.html">🏠 Home</a>
+      <a href="#basics">Basics</a>
+      <a href="#prefix">Prefix Sum</a>
+      <a href="#twoptr">Two Pointers</a>
+      <a href="#window">Sliding Window</a>
+      <a href="#advanced">Advanced</a>
+    </nav>
+  </header>
+  <main>
+    <section id="basics">
+      <h2>1️⃣ Basic Operations</h2>
+      <p>Traversing, reversing, rotation, min/max.</p>
+<pre><code>def reverse(arr):
+    l, r = 0, len(arr) - 1
+    while l < r:
+        arr[l], arr[r] = arr[r], arr[l]
+        l += 1
+        r -= 1
+</code></pre>
+      <ul>
+        <li><a href="https://leetcode.com/problems/max-consecutive-ones/">485. Max Consecutive Ones</a></li>
+        <li><a href="https://leetcode.com/problems/squares-of-a-sorted-array/">977. Squares of a Sorted Array</a></li>
+      </ul>
+    </section>
+    <section id="prefix">
+      <h2>2️⃣ Prefix Sum & Cumulative Tricks</h2>
+<pre><code>def prefix_sum(arr):
+    pre = [0]
+    for num in arr:
+        pre.append(pre[-1] + num)
+    return pre
+</code></pre>
+      <ul>
+        <li><a href="https://leetcode.com/problems/subarray-sum-equals-k/">560. Subarray Sum Equals K</a></li>
+        <li><a href="https://leetcode.com/problems/product-of-array-except-self/">238. Product of Array Except Self</a></li>
+      </ul>
+    </section>
+    <section id="twoptr">
+      <h2>3️⃣ Two Pointers</h2>
+<pre><code>def two_sum_sorted(arr, target):
+    l, r = 0, len(arr) - 1
+    while l < r:
+        s = arr[l] + arr[r]
+        if s == target:
+            return [l, r]
+        elif s < target:
+            l += 1
+        else:
+            r -= 1
+</code></pre>
+      <ul>
+        <li><a href="https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/">167. Two Sum II</a></li>
+        <li><a href="https://leetcode.com/problems/move-zeroes/">283. Move Zeroes</a></li>
+      </ul>
+    </section>
+    <section id="window">
+      <h2>4️⃣ Sliding Window</h2>
+<pre><code>def longest_subarray_sum(arr, k):
+    l = s = ans = 0
+    for r in range(len(arr)):
+        s += arr[r]
+        while s > k:
+            s -= arr[l]
+            l += 1
+        ans = max(ans, r - l + 1)
+    return ans
+</code></pre>
+      <ul>
+        <li><a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/">3. Longest Substring Without Repeating Characters</a></li>
+        <li><a href="https://leetcode.com/problems/minimum-size-subarray-sum/">209. Minimum Size Subarray Sum</a></li>
+      </ul>
+    </section>
+    <section id="advanced">
+      <h2>5️⃣ Advanced Patterns</h2>
+      <table>
+        <tr><th>Pattern</th><th>Use</th><th>LeetCode</th></tr>
+        <tr><td>Kadane’s Algo</td><td>Max Subarray Sum</td><td><a href="https://leetcode.com/problems/maximum-subarray/">53</a></td></tr>
+        <tr><td>3Sum / 4Sum</td><td>K-sum combinations</td><td><a href="https://leetcode.com/problems/3sum/">15</a></td></tr>
+        <tr><td>Prefix Hash</td><td>Count subarrays</td><td><a href="https://leetcode.com/problems/subarray-sums-divisible-by-k/">974</a></td></tr>
+        <tr><td>Binary Search on Answer</td><td>Range optimization</td><td><a href="https://leetcode.com/problems/koko-eating-bananas/">875</a></td></tr>
+        <tr><td>Monotonic Stack</td><td>Next greater element</td><td><a href="https://leetcode.com/problems/daily-temperatures/">739</a></td></tr>
+      </table>
+    </section>
+  </main>
+  <footer><p>© 2025 Nittin S — DSA Repo</p></footer>
+</body>
+</html>
