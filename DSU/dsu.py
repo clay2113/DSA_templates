@@ -1,31 +1,26 @@
 #DISJOINT SET UNION MAIN
 
-class DSU:
-#NittinS snippets
-    def __init__(self,n):
-        self.parent=list(range(n))
-        self.size=[1]*n
-        self.components=n
-
-    def find(self,x):
-        if self.parent[x]!=x:
-            self.parent[x]=self.find(self.parent[x])
-        return self.parent[x]
-
-    def union(self,a,b):
-        pa=self.find(a)
-        pb=self.find(b)
-
-        if pa==pb:
-            return False
-
-        if self.size[pa]<self.size[pb]:
-            pa,pb=pb,pa
-
-        self.parent[pb]=pa
-        self.size[pa]+=self.size[pb]
-        self.components-=1
-        return True
+    class DSU:
+    #NittinS snippets
+        def __init__(self,n):
+            self.parent=list(range(n))
+            self.size=[1]*n
+            self.components=n
+        def find(self,x):
+            if self.parent[x]!=x:
+                self.parent[x]=self.find(self.parent[x])
+            return self.parent[x]
+        def union(self,a,b):
+            pa=self.find(a)
+            pb=self.find(b)
+            if pa==pb:
+                return False
+            if self.size[pa]<self.size[pb]:
+                pa,pb=pb,pa
+            self.parent[pb]=pa
+            self.size[pa]+=self.size[pb]
+            self.components-=1
+            return True
 
   #DISJOINT SET UNION  WITH   COMPONENT SIZE TRACKER AND NO.OF GROUPS OF NODE OF SIZE K
 
