@@ -17,3 +17,4 @@ A personal collection of LeetCode templates, patterns, CP snippets and algorithm
 - Number Theory
 - Segment and Fenwick Tree
 - DSU
+- Bit Manipulation
