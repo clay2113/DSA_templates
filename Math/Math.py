@@ -201,3 +201,17 @@ def prime_factors(n):
         res.append(n)
 
     return res
+
+#also this code likewise without the primes 
+        def prime_fac(n):
+            factors = defaultdict(int)
+            while n % 2 == 0:
+                factors[2] += 1
+                n //= 2
+            for i in range(3, int(math.sqrt(n)) + 1, 2):
+                while n % i == 0:
+                    factors[i] += 1
+                    n //= i
+            if n > 2:
+                factors[n] += 1
+            return factors
