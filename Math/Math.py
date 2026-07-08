@@ -235,3 +235,27 @@ def sieve_range(start, end):
     primes = sieve(end)
     range_primes = [p for p in primes if p >= start]
     return range_primes
+
+
+
+
+#IF A,B, ... IS ALREADY MODDED WITH 10**9+7 THEN EVALUATE (A-B-C...)%MOD
+#this works because the addition and subtraction is closed by mod opertaion
+val=(A-B-C)%MOD
+
+
+
+
+
+#IF A IS ALREADY MODDED WITH MOD THEN EVALUATE (A/B)%MOD
+
+#in this case you have to create something called as the inverse mod thingy that behaves like a normal 
+#multiplicative mod
+#If the modulus is prime (such as 10**9+7), you can compute the modular inverse in O(log MOD) time using binary exponentiation and Fermat's Little Theorem.
+
+MOD=10**9+7
+inv=pow(a,MOD-2,MOD)
+print((5*inv)%MOD)
+#Time: O(log MOD)
+#Space: O(1)
+
