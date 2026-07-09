@@ -177,4 +177,79 @@ class SegTreeMin:
                 dfs(i<<1|1,m+1,r)
             dfs(1,0,self.n-1)
             return res
-        
+
+"""LAZY SUM SEGMENT TREE"""    # RANGE ADD + RANGE SUM QUERY
+
+# Build: O(N)
+# Range add: O(logN)
+# Range sum query: O(logN)
+
+class LazySum:
+#NittinS snippets
+    def __init__(self,a):
+        self.n=len(a)
+        self.seg=[0]*(4*self.n)
+        self.lazy=[0]*(4*self.n)
+        def build(i,l,r):
+            if l==r:
+                self.seg[i]=a[l]
+                return
+            m=(l+r)//2
+            build(i<<1,l,m)
+            build(i<<1|1,m+1,r)
+            self.seg[i]=self.seg[i<<1]+self.seg[i<<1|1]
+        build(1,0,self.n-1)
+
+    def push(self,i,l,r):
+        if self.lazy[i]:
+            m=(l+r)//2
+            left=i<<1
+            right=i<<1|1
+            v=self.lazy[i]
+
+            self.seg[left]+=v*(m-l+1)
+            self.seg[right]+=v*(r-m)
+
+            self.lazy[left]+=v
+            self.lazy[right]+=v
+            self.lazy[i]=0
+    def add(self,l,r,v):
+        def upd(i,tl,tr):
+            if r<tl or tr<l:
+                return
+            if l<=tl and tr<=r:
+                self.seg[i]+=v*(tr-tl+1)
+                self.lazy[i]+=v
+                return
+
+            self.push(i,tl,tr)
+            tm=(tl+tr)//2
+            upd(i<<1,tl,tm)
+            upd(i<<1|1,tm+1,tr)
+            self.seg[i]=self.seg[i<<1]+self.seg[i<<1|1]
+        upd(1,0,self.n-1)
+    def query(self,l,r):
+        def qry(i,tl,tr):
+            if r<tl or tr<l:
+                return 0
+            if l<=tl and tr<=r:
+                return self.seg[i]
+            self.push(i,tl,tr)
+            tm=(tl+tr)//2
+            return (
+                qry(i<<1,tl,tm)+
+                qry(i<<1|1,tm+1,tr)
+            )
+        return qry(1,0,self.n-1)
+    def view(self):
+        res=[0]*self.n
+        def dfs(i,l,r):
+            if l==r:
+                res[l]=self.seg[i]
+                return
+            self.push(i,l,r)
+            m=(l+r)//2
+            dfs(i<<1,l,m)
+            dfs(i<<1|1,m+1,r)
+        dfs(1,0,self.n-1)
+        return res
