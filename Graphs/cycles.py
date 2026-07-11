@@ -1,4 +1,4 @@
-#LONGEST CYCLE IN A DIRECTED GRAPH FROM LC 2360
+#LONGEST CYCLE IN A DIRECTED GRAPH CONSISTING ONLY SINGLE CYCLE AT MOST FROM LC 2360
 # time : O(N)
 def long_cycle(edges):
         adj_list=defaultdict(lambda:set())
