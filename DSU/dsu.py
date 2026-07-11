@@ -38,14 +38,14 @@
                 self.parent[x] = self.find(self.parent[x])
             return self.parent[x]
         def union(self, a, b):
-            pa = self.find(a)
-            pb = self.find(b)
-            if pa == pb:
+            pa=self.find(a)
+            pb=self.find(b)
+            if pa==pb:
                 return False
             if self.size[pa] < self.size[pb]:
-                pa, pb = pb, pa
-            sa = self.size[pa]
-            sb = self.size[pb]
+                pa,pb =pb,pa
+            sa=self.size[pa]
+            sb=self.size[pb]
             self.ans-=sa//self.k
             self.ans-=sb//self.k
             self.ans+=(sa+sb)//self.k
