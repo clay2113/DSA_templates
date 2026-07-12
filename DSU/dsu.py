@@ -64,3 +64,5 @@
             return self.components
         def count_size(self, k):
             return self.cnt[k]
+        def count_er(self):
+            return self.cnt
