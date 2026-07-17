@@ -5,7 +5,7 @@
 # Compare Subarrays: O(1)
 # Space: O(N)
 
-class Rol_Hash64:
+class RollingHash64:
 #NittinS Snippets
     MASK=(1<<64)-1
     @staticmethod
