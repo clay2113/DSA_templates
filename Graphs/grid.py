@@ -1,5 +1,6 @@
 #NEIGHBOURS IN GRID RETURN AS VALID INDICES
         def neigh(i,j):
+                #NittinS Snippets
             m,n=len(grid),len(grid[0])
             c=[]
             if i+1<m:
