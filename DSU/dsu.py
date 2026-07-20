@@ -21,6 +21,8 @@
             self.size[pa]+=self.size[pb]
             self.components-=1
             return True
+        def len_comp(self):
+            return self.components    
 
   #DISJOINT SET UNION  WITH   COMPONENT SIZE TRACKER AND NO.OF GROUPS OF NODE OF SIZE K
 
