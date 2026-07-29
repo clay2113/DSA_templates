@@ -99,3 +99,40 @@ def kth_word(s,k):
                         break
             return ''.join(ans)
 
+
+
+#K-TH LEXICOGRAPHIC PERMUTATION OF A WORD
+#DUPLICATES ARE NOT TREATED AS DISTINCT
+#RETURNS EMPTY STRING IF K IS INVALID
+#TIME : O(N * ALPHABET)
+#SPACE : O(N + ALPHABET)
+
+        def kth_word(s,k):
+            #NittinS Snippets
+            n=len(s)
+            fact=[1]*(n+1)
+            for i in range(1,n+1):
+                fact[i]=fact[i-1]*i
+            freq=[0]*26
+            for ch in s:
+                freq[ord(ch)-97]+=1
+            ways=fact[n]
+            for x in freq:
+                ways//=fact[x]
+            if k<1 or k>ways:
+                return ''
+            ans=[]
+            for i in range(n):
+                rem=n-i
+                for j in range(26):
+                    if freq[j]==0:
+                        continue
+                    cnt=ways*freq[j]//rem
+                    if k>cnt:
+                        k-=cnt
+                    else:
+                        ans.append(chr(j+97))
+                        freq[j]-=1
+                        ways=cnt
+                        break
+            return ''.join(ans) 
