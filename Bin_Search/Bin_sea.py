@@ -116,14 +116,12 @@ def first_true(lo,hi):
 #
 #==================================================
 
-def last_true(lo,hi):
-    #NittinS snippets
-    while lo<hi:
-        mid=(lo+hi+1)//2
-
-        if check(mid):
-            lo=mid
-        else:
-            hi=mid-1
-
-    return lo
+    def last_true(lo,hi):
+        #NittinS snippets
+        while lo<hi:
+            mid=(lo+hi+1)//2
+            if check(mid):
+                lo=mid
+            else:
+                hi=mid-1
+        return lo
