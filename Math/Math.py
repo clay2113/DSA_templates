@@ -266,3 +266,13 @@ for all x which are divisible by m/gcd(x,m) satisfies the equation
 #KEEP IN MIND THAT ALL POSSIBLE M/GCD(X,M) CAN BE LIKE MAX 100 DISTINCT NUMBERS SO U CAN APPLY IN 10**5 NUMBERS ALSO 
 #The number below 100,000 with the most factors is 83,160, which has a total of 128 factors.
 
+
+
+#IF WE NEED TO FIND THE MODULAR INVERSE OF A (X/Y) MOD M  FOR Y  THEN FOR ANY M WHERE GCD(Y,M) ==1
+from math import gcd
+
+def mod_div(x,y,m):
+    if gcd(y,m)!=1:
+        return None
+    return (x%m)*pow(y,-1,m)%m
+
