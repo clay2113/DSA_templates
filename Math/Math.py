@@ -259,3 +259,10 @@ print((5*inv)%MOD)
 #Time: O(log MOD)
 #Space: O(1)
 
+
+
+#TO SOLVE --> (x*c) mod m =0 solve for x where c is constant  LC 2183
+for all x which are divisible by m/gcd(x,m) satisfies the equation 
+#KEEP IN MIND THAT ALL POSSIBLE M/GCD(X,M) CAN BE LIKE MAX 100 DISTINCT NUMBERS SO U CAN APPLY IN 10**5 NUMBERS ALSO 
+#The number below 100,000 with the most factors is 83,160, which has a total of 128 factors.
+
