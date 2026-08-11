@@ -68,3 +68,56 @@
             return self.cnt[k]
         def count_er(self):
             return self.cnt
+
+#DSU + component metadata   CAN BE USED IF THERE IS AN AGGREGATE ASSOCIATED WITH THE NODES LIKE SUM,MIN,MAX HERE IT RETURN IN RESPECT
+# TO THE COMPONENTS'S VALUE AND ALSO IT HAS A MODIFY FUNCTION FOR THE NODE'S VALUE
+class DSU:
+    # NittinS snippets
+    def __init__(self,n,values=None):
+        self.parent=list(range(n))
+        self.size=[1]*n
+        self.components=n
+        if values is None:
+            values=[0]*n
+        self.comp_value=[
+            [x,x,x] for x in values
+        ]
+    def find(self,x):
+        if self.parent[x]!=x:
+            self.parent[x]=self.find(self.parent[x])
+        return self.parent[x]
+    def union(self,a,b):
+        pa=self.find(a)
+        pb=self.find(b)
+        if pa==pb:
+            return False
+        if self.size[pa]<self.size[pb]:
+            pa,pb=pb,pa
+        self.parent[pb]=pa
+        self.size[pa]+=self.size[pb]
+        self.comp_value[pa][0]+=self.comp_value[pb][0]
+        self.comp_value[pa][1]=max(
+            self.comp_value[pa][1],
+            self.comp_value[pb][1]
+        )
+        self.comp_value[pa][2]=min(
+            self.comp_value[pa][2],
+            self.comp_value[pb][2]
+        )
+        self.components-=1
+        return True
+    def add_value(self,x,value):
+        root=self.find(x)
+        self.comp_value[root][0]+=value
+        self.comp_value[root][1]=max(
+            self.comp_value[root][1],
+            value
+        )
+        self.comp_value[root][2]=min(
+            self.comp_value[root][2],
+            value
+        )
+    def get_value(self,x):
+        return self.comp_value[self.find(x)]
+    def len_comp(self):
+        return self.components
