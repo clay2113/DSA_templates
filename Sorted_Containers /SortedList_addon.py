@@ -1,6 +1,7 @@
 from sortedcontainers import SortedList
 
 # ADD ALL THE ELEMENTS WITH SOME VALUE IN SORTEDLIST
+# IF YOU WANT TO DO THE BINARY SEARCH THEN DO IT WITH THE CLASS'S METHOD ONLY OTHERWISE IT USES THE PYTHON'S BISECT AND BRING TLE :(
     class LazySortedList:
         def __init__(self):
             self.sl = SortedList()
