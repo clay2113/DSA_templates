@@ -20,3 +20,4 @@ A personal collection of LeetCode templates, patterns, CP snippets and algorithm
 - Bit Manipulation
 - Sqrt Algorithms
 - Stack
+- Sorted Containers
