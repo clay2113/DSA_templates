@@ -128,3 +128,92 @@ class ValueSortedDict:
     def values(self):
         for k,v in self.items():
             yield v
+
+
+### `__init__()`
+
+Initializes the Treap root and the normal dictionary `key → value`.
+
+### `Node()`
+
+Creates one Treap node containing the key, value, random priority, children, and subtree size.
+
+### `size(x)`
+
+Returns the number of nodes in subtree `x`. Returns `0` for `None`.
+
+### `upd(x)`
+
+Recalculates `x.sz` from the sizes of its left and right subtrees.
+
+### `rotR(x)`
+
+Performs a right rotation to maintain the Treap's heap property.
+
+### `rotL(x)`
+
+Performs a left rotation to maintain the Treap's heap property.
+
+### `insert(x, y)`
+
+Inserts node `y` according to `(value, key)` ordering and restores the Treap priority property.
+
+### `merge(a, b)`
+
+Merges two Treaps where every element in `a` is smaller than every element in `b`.
+
+### `erase(x, k, v)`
+
+Removes `(value, key)` from the Treap and merges its two resulting subtrees.
+
+### `__setitem__(k, v)`
+
+Sets `d[k] = v`. If `k` already exists, removes its old value before inserting the new one.
+
+### `__getitem__(k)`
+
+Returns the value associated with `k` in **O(1)**.
+
+### `get(k, default)`
+
+Returns `d[k]` if present, otherwise returns `default`.
+
+### `__contains__(k)`
+
+Checks whether `k` exists in the dictionary.
+
+### `__len__()`
+
+Returns the number of key-value pairs in the structure.
+
+### `__delitem__(k)`
+
+Deletes key `k` from both the dictionary and the Treap.
+
+### `min()`
+
+Returns the `(key, value)` pair with the smallest `(value, key)`.
+
+### `max()`
+
+Returns the `(key, value)` pair with the largest `(value, key)`.
+
+### `kth(k)`
+
+Returns the **0-indexed k-th smallest** `(key, value)` using subtree sizes.
+
+### `rank(k)`
+
+Returns how many elements have `(value, key)` smaller than the specified key.
+
+### `items()`
+
+Iterates through all `(key, value)` pairs in increasing `(value, key)` order.
+
+### `keys()`
+
+Iterates through keys in increasing value order.
+
+### `values()`
+
+Iterates through values in increasing `(value, key)` order.
