@@ -37,20 +37,20 @@
 # HASH : O(1)
 # SPACE : O(1)
 
-class RollingHash:
-    #NittinS snippets
-    def __init__(self,base=911382323,mod=10**18+9):
-        self.base=base
-        self.mod=mod
-        self.hash=0
-
-    def add(self,c):
-        if isinstance(c,str):
-            c=ord(c)
-        self.hash=(self.hash*self.base+c)%self.mod
-
-    def get(self):
-        return self.hash
+    class RollingHash:
+        #NittinS snippets
+        def __init__(self,base=911382323,mod=10**18+9):
+            self.base=base
+            self.mod=mod
+            self.hash=0
+    
+        def add(self,c):
+            if isinstance(c,str):
+                c=ord(c)
+            self.hash=(self.hash*self.base+c)%self.mod
+    
+        def get(self):
+            return self.hash
 
 
 # REPEATED DOUBLE ROLLING HASH
@@ -59,21 +59,21 @@ class RollingHash:
 # HASH : O(1)
 # SPACE : O(1)
 
-class RollingHash:
-    #NittinS
-    def __init__(self):
-        self.h1=0
-        self.h2=0
-        self.b1=911382323
-        self.b2=972663749
-        self.m1=(1<<64)
-        self.m2=(1<<64)
+    class RollingHash:
+        #NittinS snippets
+        def __init__(self):
+            self.h1=0
+            self.h2=0
+            self.b1=911382323
+            self.b2=972663749
+            self.m1=(1<<64)
+            self.m2=(1<<64)
 
-    def add(self,c):
-        if isinstance(c,str):
-            c=ord(c)
-        self.h1=(self.h1*self.b1+c)%self.m1
-        self.h2=(self.h2*self.b2+c)%self.m2
+        def add(self,c):
+            if isinstance(c,str):
+                c=ord(c)
+            self.h1=(self.h1*self.b1+c)%self.m1
+            self.h2=(self.h2*self.b2+c)%self.m2
 
-    def get(self):
-        return self.h1,self.h2
+        def get(self):
+            return self.h1,self.h2
