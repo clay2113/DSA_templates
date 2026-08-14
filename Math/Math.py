@@ -220,6 +220,7 @@ def prime_factors(n):
  
 # 0 and 1 are not prime numbers
 def sieve(n):
+    #NittinS Snippets
     prime = [True] * (n + 1)
     prime[0] = prime[1] = False
     limit = int(math.sqrt(n))
