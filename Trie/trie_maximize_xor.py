@@ -14,6 +14,8 @@
 
 
 #refer 421. Maximum XOR of Two Numbers in an Array
+#it utilizes the fact that numbers can be like 30bits for 10**9 so O(bit_count()) query suffices for checking 
+#maximum matching of the ideal number to be XORed ;)
 class Trie:
   #NittinS Snippets
         class TrieNode:
