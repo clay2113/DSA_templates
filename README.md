@@ -21,3 +21,4 @@ A personal collection of LeetCode templates, patterns, CP snippets and algorithm
 - Sqrt Algorithms
 - Stack
 - Sorted Containers
+- Trie
