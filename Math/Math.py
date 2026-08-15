@@ -277,3 +277,7 @@ def mod_div(x,y,m):
         return None
     return (x%m)*pow(y,-1,m)%m
 
+#BASIC MOD ADD AND SUBTRACT 
+-> (a + b)%k = (a%k + b%k)%k 
+-> (a - b)%k = (a%k - b%k + k)%k
+
