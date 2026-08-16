@@ -106,6 +106,47 @@ class SegTreeMin:
             l>>=1;r>>=1
         return res
 
+"""AND SEGMENT TREE"""    # FOR RANGE AND QUERIES + POINT UPDATES
+
+# Build: O(N)
+# Point update: O(logN)
+# Range AND query: O(logN)
+
+    class SegTreeAND:
+        #NittinS Snippets --> https://github.com/clay2113/DSA_templates
+        def __init__(self, a, bits=30):
+            self.n = len(a)
+            self.N = 1 << (self.n - 1).bit_length()
+            self.ID = (1 << bits) - 1
+            self.seg = [self.ID] * (2 * self.N)
+            self.seg[self.N:self.N + self.n] = a
+            for i in range(self.N - 1, 0, -1):
+                self.seg[i] = self.seg[i << 1] & self.seg[i << 1 | 1]
+
+        def update(self, i, x):
+            i += self.N
+            self.seg[i] = x
+            i >>= 1
+            while i:
+                self.seg[i] = self.seg[i << 1] & self.seg[i << 1 | 1]
+                i >>= 1
+
+        def query(self, l, r):
+            r += 1
+            ansL = ansR = self.ID
+            l += self.N
+            r += self.N
+            while l < r:
+                if l & 1:
+                    ansL &= self.seg[l]
+                    l += 1
+                if r & 1:
+                    r -= 1
+                    ansR &= self.seg[r]
+                l >>= 1
+                r >>= 1
+            return ansL & ansR
+
 
 """LAZY MIN SEGMENT TREE"""    # RANGE ADD + RANGE MIN QUERY
 
