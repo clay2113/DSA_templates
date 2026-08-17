@@ -91,3 +91,86 @@ def linear_sieve(n):
     return primes,is_prime
 
 
+#==================================================
+#NittinS snippets
+#
+#PRIME FACTORIZATION
+#
+#Think:
+#Need all prime factors
+#Including duplicates
+#
+#Idea:
+#Try dividing by primes in order
+#
+#Vars:
+#n      -> number
+#res    -> prime factors
+#p      -> current prime
+#PRIMES -> sieve generated primes
+#
+#TC: O(pi(sqrt(n)))
+#SC: O(logn)
+#
+#Notes:
+#Works well for n <= 1e8
+#
+#==================================================
+
+def prime_factors(n):
+    #NittinS snippets
+    res=[]
+
+    for p in PRIMES:
+        if p*p>n:
+            break
+
+        while n%p==0:
+            res.append(p)
+            n//=p
+
+    if n>1:
+        res.append(n)
+
+    return res
+
+#also this code likewise without the primes 
+        def prime_fac(n):
+            factors = defaultdict(int)
+            while n % 2 == 0:
+                factors[2] += 1
+                n //= 2
+            for i in range(3, int(math.sqrt(n)) + 1, 2):
+                while n % i == 0:
+                    factors[i] += 1
+                    n //= i
+            if n > 2:
+                factors[n] += 1
+            return factors
+
+#PRIMES BETWEEN A RANGE WITH SEGMENTED SIEVE
+ 
+# 0 and 1 are not prime numbers
+def sieve(n):
+    #NittinS Snippets
+    prime = [True] * (n + 1)
+    prime[0] = prime[1] = False
+    limit = int(math.sqrt(n))
+    for p in range(2, limit + 1):
+        if prime[p]:
+            for i in range(p * p, n + 1, p):
+                prime[i] = False
+    primes = [i for i in range(n + 1) if prime[i]]
+    return primes
+
+# Function to find primes in a range [start, end] using a segmented sieve
+def sieve_range(start, end):
+    primes = sieve(end)
+    range_primes = [p for p in primes if p >= start]
+    return range_primes
+
+
+
+
+
+
