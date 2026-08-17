@@ -113,21 +113,17 @@ def linear_sieve(n):
 #
 #==================================================
 
-def bin_ex(a,b):
-    #NittinS snippets
-    val=1
-    mod=10**9+7
-
-    a%=mod
-
-    while b>0:
-        if b&1:
-            val=(val*a)%mod
-
-        a=(a*a)%mod
-        b>>=1
-
-    return val%mod
+        def bin_ex(a,b):
+            #NittinS snippets --> https://github.com/clay2113/DSA_templates
+            val=1
+            mod=10**9+7
+            a%=mod
+            while b>0:
+                if b&1:
+                    val=(val*a)%mod
+                a=(a*a)%mod
+                b>>=1
+            return val%mod
 
 
 #==================================================
