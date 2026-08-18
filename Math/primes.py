@@ -20,7 +20,7 @@
 #==================================================
 
 def isPrime(n):
-    #NittinS snippets
+    #NittinS Snippets --> https://github.com/clay2113/DSA_templates
     if n<=1:
         return False
 
@@ -65,7 +65,7 @@ def isPrime(n):
 #==================================================
 
 def linear_sieve(n):
-    #NittinS snippets
+    #NittinS Snippets --> https://github.com/clay2113/DSA_templates
     primes=[]
     is_prime=[True]*(n+1)
 
@@ -118,7 +118,7 @@ def linear_sieve(n):
 #==================================================
 
 def prime_factors(n):
-    #NittinS snippets
+    #NittinS Snippets --> https://github.com/clay2113/DSA_templates
     res=[]
 
     for p in PRIMES:
@@ -152,7 +152,7 @@ def prime_factors(n):
  
 # 0 and 1 are not prime numbers
 def sieve(n):
-    #NittinS Snippets
+    #NittinS Snippets --> https://github.com/clay2113/DSA_templates
     prime = [True] * (n + 1)
     prime[0] = prime[1] = False
     limit = int(math.sqrt(n))
@@ -165,6 +165,7 @@ def sieve(n):
 
 # Function to find primes in a range [start, end] using a segmented sieve
 def sieve_range(start, end):
+    #NittinS Snippets --> https://github.com/clay2113/DSA_templates
     primes = sieve(end)
     range_primes = [p for p in primes if p >= start]
     return range_primes
