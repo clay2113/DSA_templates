@@ -35,15 +35,15 @@ def bs(lo,hi):
             lo=mid+1
 
     return lo
-
+#FOR DECREASING 
 def bs(lo, hi):
-    while lo <= hi:
-        mid = (lo + hi) // 2
-
+    #NittinS
+    while lo<=hi:
+        mid=(lo+hi) // 2
         if check(mid):
-            lo = mid + 1  
+            lo=mid+1  
         else:
-            hi = mid - 1 
+            hi=mid-1 
     return hi 
 
 #==================================================
