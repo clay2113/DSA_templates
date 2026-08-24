@@ -36,6 +36,15 @@ def bs(lo,hi):
 
     return lo
 
+def bs(lo, hi):
+    while lo <= hi:
+        mid = (lo + hi) // 2
+
+        if check(mid):
+            lo = mid + 1  
+        else:
+            hi = mid - 1 
+    return hi 
 
 #==================================================
 #NittinS snippets
