@@ -17,3 +17,22 @@ Note that there is a limiting value
                     #break
                 ans.append(p)
             return ans  
+
+#same thing but from 1-->x palindromes 
+        def all_p(x):
+            # NittinS Snippets --> https://github.com/clay2113/DSA_templates
+            ans =[]
+            for le in range(1,len(str(x))+1):
+                h=(le+1)//2
+                pw=10**(h-1)
+                for a in range(pw, 10 * pw):
+                    y=a//10 if le&1 else a
+                    p=a
+                    while y:
+                        p=p*10+y%10
+                        y //=10
+                    if p>x:
+                        break
+                    ans.append(p)
+            return ans  
+        
