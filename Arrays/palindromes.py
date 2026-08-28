@@ -14,6 +14,5 @@
                       y//=10
                   if p>limit:
                       break
-                  if isPrime(p):
-                      ans.append(p)
+                  ans.append(p)
               return ans
