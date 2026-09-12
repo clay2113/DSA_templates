@@ -105,3 +105,9 @@ def mod_div(x,y,m):
 -> (a + b)%k = (a%k + b%k)%k 
 -> (a - b)%k = (a%k - b%k + k)%k
 
+
+
+##MOD PROPERTY FOR EXPONENTS FORMULA 
+\(a^b \pmod{m} = (a \pmod{m})^b \pmod{m}\)
+--> (A**B) MOD M = (((A MOD M) ** B) MOD M
+
