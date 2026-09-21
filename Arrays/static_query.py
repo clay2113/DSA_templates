@@ -4,31 +4,23 @@
 # Range max query: O(1)
 # Memory: O(N log N)
 
-class StaticMax:
-    #NittinS snippets
-    def __init__(self,a):
-        self.n=len(a)
-        self.LOG=self.n.bit_length()
-
-        self.st=[a[:]]
-
-        for j in range(1,self.LOG):
-            prev=self.st[-1]
-            length=1<<j
-            half=length>>1
-
-            self.st.append([
-                max(prev[i],prev[i+half])
-                for i in range(self.n-length+1)
-            ])
-
-        self.log=[0]*(self.n+1)
-        for i in range(2,self.n+1):
-            self.log[i]=self.log[i>>1]+1
-
-    def max_val(self,l,r):
-        k=self.log[r-l+1]
-        return max(self.st[k][l],self.st[k][r-(1<<k)+1])
+    class StaticMax:
+        #NittinS snippets
+        def __init__(self,a):
+            self.n=len(a)
+            self.LOG=self.n.bit_length()
+            self.st=[a[:]]
+            for j in range(1,self.LOG):
+                prev=self.st[-1]
+                length=1<<j
+                half=length>>1
+                self.st.append([max(prev[i],prev[i+half]) for i in range(self.n-length+1)])
+            self.log=[0]*(self.n+1)
+            for i in range(2,self.n+1):
+                self.log[i]=self.log[i>>1]+1
+        def query(self,l,r):
+            k=self.log[r-l+1]
+            return max(self.st[k][l],self.st[k][r-(1<<k)+1])
 
 
 
