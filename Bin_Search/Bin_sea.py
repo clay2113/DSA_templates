@@ -134,3 +134,15 @@ def first_true(lo,hi):
             else:
                 hi=mid-1
         return lo
+
+
+#FOR FINDING OPTIMUM FROM UNIMODEL FUNCTION \_/ LIKE THIS xD
+
+        def convex_search(lo,hi):
+                while lo<hi:
+                    mid=(lo+hi)//2
+                    if check(mid)<=check(mid+1):
+                        hi=mid
+                    else:
+                        lo=mid+1
+                return lo
