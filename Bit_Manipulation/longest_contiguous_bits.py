@@ -10,6 +10,9 @@ def max_consecutive_ones(n):
 
 #TO FIND IT IN LOGN TIME USING BINARY LIFTING --> WHEN WE HAVE LIKE N BITS OF 10**5 LENGTH ITS VERY USEFUL AS 
 #I USE IN LARGEST RECTANGLE HISTOGRAM PROBLEM.
+
+#https://leetcode.com/problems/maximal-rectangle/submissions/2150452767/
+#https://leetcode.com/problems/largest-rectangle-in-histogram/submissions/2150473799/
         def max_run(x):
             # NittinS Snippets
             if not x:
