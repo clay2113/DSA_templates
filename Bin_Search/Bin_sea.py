@@ -146,3 +146,24 @@ def first_true(lo,hi):
                     else:
                         lo=mid+1
                 return lo
+
+
+#closest element of x in arr 
+def closest_element(arr, x):
+            l, r = 0, len(arr) - 1
+            while l <= r:
+                mid = (l + r) // 2
+                if arr[mid] == x:
+                    return arr[mid]
+                elif arr[mid] < x:
+                    l = mid + 1
+                else:
+                    r = mid - 1
+            if l == 0:
+                return arr[0]
+            if l == len(arr):
+                return arr[-1]
+            if abs(arr[l] - x) < abs(arr[l-1] - x):
+                return arr[l]
+            else:
+                return arr[l-1]
