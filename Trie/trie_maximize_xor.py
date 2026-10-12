@@ -76,3 +76,57 @@ class Trie:
                     del node.next[c]
                 return len(node.next)==0 and node.end==0
             dfs(self.root,0)
+
+
+
+#another implementation 
+class Trie:
+    #NittinS snippets
+    def __init__(self,B=31):
+        self.B=B
+        self.trie=[[-1,-1]]
+        self.cnt=[0]
+
+    def add(self,x):
+        i=0
+        self.cnt[i]+=1
+        for b in range(self.B,-1,-1):
+            bit=(x>>b)&1
+            if self.trie[i][bit]==-1:
+                self.trie[i][bit]=len(self.trie)
+                self.trie.append([-1,-1])
+                self.cnt.append(0)
+            i=self.trie[i][bit]
+            self.cnt[i]+=1
+
+    def delete(self,x):
+        i=0
+        path=[]
+        for b in range(self.B,-1,-1):
+            bit=(x>>b)&1
+            j=self.trie[i][bit]
+            if j==-1 or self.cnt[j]==0:
+                return False
+            path.append((i,bit,j))
+            i=j
+        self.cnt[0]-=1
+        for _,_,j in path:
+            self.cnt[j]-=1
+        return True
+
+    def query(self,x):
+        if self.cnt[0]==0:
+            return None
+        i=0
+        y=0
+        for b in range(self.B,-1,-1):
+            bit=(x>>b)&1
+            want=bit^1
+            j=self.trie[i][want]
+            if j!=-1 and self.cnt[j]>0:
+                y|=want<<b
+                i=j
+            else:
+                y|=bit<<b
+                i=self.trie[i][bit]
+        return x^y,y
