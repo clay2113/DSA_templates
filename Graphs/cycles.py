@@ -31,3 +31,21 @@ def long_cycle(edges):
             if i not in visited:
                 max_val=max(max_val,dfs(i,0))
         return max_val
+
+
+#CYCLE DETECTION FROM ADJ LIST OF A DIRECTED GRAPH
+
+def hasCycle(n,adj):
+    indeg=[0]*n
+    for u in range(n):
+        for v in adj[u]:
+            indeg[v]+=1
+    q=deque(i for i in range(n) if indeg[i]==0)
+    cnt=0
+    while q:
+        u=q.popleft()
+        cnt+=1
+        for v in adj[u]:
+            indeg[v]-=1
+            if indeg[v]==0:q.append(v)
+    return cnt!=n
