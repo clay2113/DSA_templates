@@ -147,6 +147,60 @@ class SegTreeSum:
             r>>=1
         return res+k*self.lazy
 
+
+
+"""SUM SEGMENT TREE"""    # FOR COMPRESSED COORDINATES + GLOBAL ADD + RANGE SUM + POINT UPDATES
+
+# Build: O(N logN)
+# Global add: O(1)
+# Point update: O(logN)
+# Range sum query: O(logN)
+# View: O(N)
+
+from bisect import bisect_left,bisect_right
+
+class SegTreeSum:
+    #NittinS Snippets --> https://github.com/clay2113/DSA_templates
+    def __init__(self,a):
+        self.x=sorted(set(a))
+        self.n=len(self.x)
+        self.mp={v:i for i,v in enumerate(self.x)}
+        self.seg=[0]*(self.n<<1)
+        self.lazy=0
+
+    def add_all(self,v):
+        self.lazy+=v
+
+    def view(self):
+        v=self.lazy
+        return [x+v for x in self.seg[self.n:]]
+
+    def update(self,x,v):
+        p=self.mp[x]+self.n
+        self.seg[p]=v-self.lazy
+        while p>1:
+            p>>=1
+            self.seg[p]=self.seg[p<<1]+self.seg[p<<1|1]
+
+    def query(self,l,r):
+        n=self.n
+        x=self.x
+        l=bisect_left(x,l)+n
+        r=bisect_right(x,r)+n
+        k=r-l
+        seg=self.seg
+        res=0
+        while l<r:
+            if l&1:
+                res+=seg[l]
+                l+=1
+            if r&1:
+                r-=1
+                res+=seg[r]
+            l>>=1
+            r>>=1
+        return res+k*self.lazy
+        
 """AND SEGMENT TREE"""    # FOR RANGE AND QUERIES + POINT UPDATES
 
 # Build: O(N)
