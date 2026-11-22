@@ -110,6 +110,43 @@ class SegTreeMax:
                 l>>=1;r>>=1
             return res
 
+class SegTreeSum:
+    #NittinS snippets
+    def __init__(self,a):
+        self.n=len(a)
+        self.seg=[0]*(2*self.n)
+        self.lazy=0
+        for i,x in enumerate(a):
+            self.seg[self.n+i]=x
+        for i in range(self.n-1,0,-1):
+            self.seg[i]=self.seg[i<<1]+self.seg[i<<1|1]
+    def add_all(self,v):
+        self.lazy+=v
+    def view(self):
+        return [x+self.lazy for x in self.seg[self.n:]]
+    def update(self,p,v):
+        p+=self.n
+        self.seg[p]=v-self.lazy
+        p>>=1
+        while p:
+            self.seg[p]=self.seg[p<<1]+self.seg[p<<1|1]
+            p>>=1
+    def query(self,l,r):
+        k=r-l+1
+        l+=self.n
+        r+=self.n+1
+        res=0
+        while l<r:
+            if l&1:
+                res+=self.seg[l]
+                l+=1
+            if r&1:
+                r-=1
+                res+=self.seg[r]
+            l>>=1
+            r>>=1
+        return res+k*self.lazy
+
 """AND SEGMENT TREE"""    # FOR RANGE AND QUERIES + POINT UPDATES
 
 # Build: O(N)
