@@ -69,3 +69,11 @@ class Trie:
                 del node.next[c]
             return len(node.next)==0 and node.end==0
         dfs(self.root,0)
+    def largest(self):
+        node=self.root
+        s=[]
+        while node.next:
+            c=max(node.next)
+            node=node.next[c]
+            s.append(c)
+        return ''.join(s)
